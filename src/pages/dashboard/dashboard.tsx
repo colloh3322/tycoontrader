@@ -23,84 +23,76 @@ const DashboardComponent = observer(({ handleTabChange }: TMobileIconGuide) => {
     const { isDesktop, isTablet } = useDevice();
 
     return (
-        <React.Fragment>
-        <div
-            className={classNames('tab__dashboard tycoon-dashboard', {
-                'tab__dashboard--tour-active': active_tour,
-            })}
-        >
-            <div className='dashboard-top'>
+    <>
+    <div className="tycoon-dashboard">
 
-                <div className='dashboard-title'>
-                    <h1>Tycoon Traders</h1>
-                    <p>Professional Trading Dashboard</p>
-                </div>
-
-                <div className='dashboard-stats'>
-
-                    <div className='stat-card'>
-                        <h3>Balance</h3>
-                        <span>$12,450.00</span>
-                    </div>
-
-                    <div className='stat-card'>
-                        <h3>Equity</h3>
-                        <span>$12,835.00</span>
-                    </div>
-
-                    <div className='stat-card'>
-                        <h3>Today's Profit</h3>
-                        <span className='profit'>+$385.40</span>
-                    </div>
-
-                    <div className='stat-card'>
-                        <h3>Bots Running</h3>
-                        <span>6</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div className='dashboard-body'>
-
-                <div className='market-panel'>
-
-                    <h2>Live Markets</h2>
-
-                    <ul>
-                        <li>EUR/USD ▲ 1.1045</li>
-                        <li>GBP/USD ▼ 1.2764</li>
-                        <li>BTC/USD ▲ 108,560</li>
-                        <li>XAU/USD ▲ 3378</li>
-                    </ul>
-
-                </div>
-
-                <div className='dashboard-actions'>
-                    <Cards
-                        has_dashboard_strategies={has_dashboard_strategies}
-                        is_mobile={!isDesktop}
-                    />
-                </div>
-
-            </div>
-
-            {client.is_logged_in && (
-                <Announcements
-                    is_mobile={!isDesktop}
-                    is_tablet={isTablet}
-                    handleTabChange={handleTabChange}
-                />
-            )}
+        <div className="dashboard-header">
+            <h1>Tycoon Traders</h1>
+            <p>Professional Trading Dashboard</p>
         </div>
 
-        <InfoPanel />
+        <div className="stats-grid">
 
-        {active_tab === 0 && (
-            <OnboardTourHandler is_mobile={!isDesktop} />
+            <div className="stat-card">
+                <h3>Balance</h3>
+                <span>$12,450.00</span>
+            </div>
+
+            <div className="stat-card">
+                <h3>Equity</h3>
+                <span>$12,835.00</span>
+            </div>
+
+            <div className="stat-card">
+                <h3>Today's Profit</h3>
+                <span className="profit">+$385.40</span>
+            </div>
+
+            <div className="stat-card">
+                <h3>Active Bots</h3>
+                <span>6 Running</span>
+            </div>
+
+        </div>
+
+        <div className="dashboard-main">
+
+            <div className="market-panel">
+                <h2>Live Markets</h2>
+
+                <ul>
+                    <li>EUR/USD ▲ 1.1042</li>
+                    <li>GBP/USD ▼ 1.2785</li>
+                    <li>BTC/USD ▲ 108,540</li>
+                    <li>XAU/USD ▲ 3378</li>
+                </ul>
+
+            </div>
+
+            <div className="action-grid">
+
+                <Cards has_dashboard_strategies={has_dashboard_strategies} is_mobile={!isDesktop} />
+
+                <InfoPanel />
+
+            </div>
+
+        </div>
+
+        {client.is_logged_in && (
+            <Announcements
+                is_mobile={!isDesktop}
+                is_tablet={isTablet}
+                handleTabChange={handleTabChange}
+            />
         )}
-    </React.Fragment>
+
+    </div>
+
+    {active_tab === 0 && (
+        <OnboardTourHandler is_mobile={!isDesktop} />
+    )}
+</>
     );
 });
 
