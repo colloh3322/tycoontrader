@@ -23,8 +23,7 @@ const DashboardComponent = observer(({ handleTabChange }: TMobileIconGuide) => {
     const { isDesktop, isTablet } = useDevice();
 
     return (
-       
-   <React.Fragment>
+        <React.Fragment>
         <div
             className={classNames('tab__dashboard tycoon-dashboard', {
                 'tab__dashboard--tour-active': active_tour,
